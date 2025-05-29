@@ -1,19 +1,23 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
-// Views
-import Dashboard from '../views/Dashboard.vue' // 👈 import Dashboard view
+import Dashboard from '../views/Dashboard.vue'
 
 const routes = [
   {
-    path: '/dashboard',
+    path: '/',                 // 👈 Dashboard now loads at root path
     name: 'Dashboard',
-    component: Dashboard, // 👈 new dashboard route
+    component: Dashboard
   },
+
+  // Optional: Redirect /dashboard to /
+  {
+    path: '/dashboard',
+    redirect: '/'
+  }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes
 })
 
 export default router

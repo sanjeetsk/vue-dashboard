@@ -1,20 +1,77 @@
-<!-- src/views/Dashboard.vue -->
 <template>
   <div class="dashboard">
-    <Revenue />
-    <LostDeal />
+    <!-- Top widgets row -->
+    <div class="top-widgets">
+      <Revenue />
+      <LostDeal />
+      <Quartergoal />
+    </div>
+
+    <!-- Customers and Growth section -->
+    <div class="middle-section">
+      <CustomersList />
+      <GrowthChart />
+    </div>
+
+    <!-- Bottom row: Chats + Top States + New Deals -->
+    <div class="bottom-widgets">
+      <div class="widget-card"><Chats /></div>
+      <div class="widget-card"><TopStates /></div>
+      <div class="widget-card"><NewDeals /></div>
+    </div>
   </div>
 </template>
 
 <script setup>
 import Revenue from '../components/widgets/Revenue.vue'
 import LostDeal from '../components/widgets/LostDeal.vue'
+import Quartergoal from '../components/widgets/Quartergoal.vue'
+import CustomersList from '../components/widgets/CustomersList.vue'
+import GrowthChart from '../components/widgets/GrowthChart.vue'
+import Chats from '../components/widgets/Chats.vue'
+import TopStates from '../components/widgets/TopStates.vue'
+import NewDeals from '../components/widgets/NewDeals.vue'
 </script>
 
 <style scoped>
 .dashboard {
   min-height: 100vh;
+}
+
+/* Top row of widgets */
+.top-widgets {
   display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.top-widgets > * {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Middle section: Customers + Growth */
+.middle-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Bottom widgets row styled as per Figma */
+.bottom-widgets {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* Card styling for bottom widgets */
+.widget-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 </style>

@@ -1,13 +1,13 @@
 <!-- src/components/widgets/Revenue.vue -->
 <template>
-  <div class="revenue-card">
-    <div class="header">Revenues</div>
+  <div class="lostdeal-card">
+    <div class="header">LostDeal</div>
     <div class="percentage">
-      <span class="value">15%</span>
+      <span class="value">4%</span>
       <span class="arrow">↑</span>
     </div>
-    <p class="description">Increase compared to last week</p>
-    <a href="#" class="link">Revenues report →</a>
+    <p class="description">II get rate out96 out of 100</p>
+    <a href="#" class="link">Lost deals →</a>
   </div>
 </template>
 
@@ -16,11 +16,11 @@
 </script>
 
 <style scoped>
-.revenue-card {
+.lostdeal-card {
   width: 300px;
   height: 200px;
   background-color: #fff;
-  border-radius: 16px;
+  border-radius: 15px;
   padding: 24px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   font-family: 'Inter', sans-serif;
