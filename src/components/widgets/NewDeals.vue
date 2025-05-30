@@ -31,14 +31,16 @@ const deals = [
 }
 
 .title {
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #111;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .deal-list {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
@@ -46,10 +48,10 @@ const deals = [
 .deal-item {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 1.5rem;
   background-color: #fff7e6;
   border-radius: 12px;
-  padding: 0.4rem 0.75rem;
+  padding: 0.6rem 0.95rem;
   font-size: 0.7rem;
   font-weight: 400;
   color: #734a00;

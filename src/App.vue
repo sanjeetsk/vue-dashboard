@@ -31,10 +31,10 @@ html, body {
 .sidebar-container {
   display: flex;
   width: 260px;
-  height: 100vh;
   background: #f4f4f4;
   padding: 20px 0 16px 16px;
-  overflow: visible;
+  overflow: scroll;
+  scrollbar-width: none;
 }
 
 .main-content {

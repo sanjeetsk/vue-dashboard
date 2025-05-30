@@ -62,7 +62,7 @@ const customers = ref([
 ])
 
 const sortedCustomers = computed(() => {
-  return sortOrder.value === 'newest'
+  return sortOrder.value === 'oldest'
     ? [...customers.value].reverse()
     : customers.value
 })
@@ -71,7 +71,7 @@ const sortedCustomers = computed(() => {
 <style scoped>
 .customer-card {
   background: white;
-  border-radius: 16px;
+  border-radius: 15px;
   padding: 1rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
@@ -85,16 +85,16 @@ const sortedCustomers = computed(() => {
 
 .header h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  color: #222;
+  color: #111;
 }
 
 .sort-select {
   padding: 0.5rem;
   border-radius: 8px;
   color: #555;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   cursor: pointer;
   border: none;
 }
@@ -152,12 +152,17 @@ const sortedCustomers = computed(() => {
 
 .footer {
   text-align: left;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .footer a {
+  font-size: 14px;
+  color: #8a5c00;
+  font-weight: 400;
   text-decoration: none;
-  color: #8c4f2b;
-  font-weight: 500;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }
 </style>

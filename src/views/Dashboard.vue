@@ -2,7 +2,7 @@
   <div class="dashboard">
     <!-- Top widgets row -->
     <div class="top-widgets">
-      <Revenue />
+      <Revenues />
       <LostDeal />
       <Quartergoal />
     </div>
@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import Revenue from '../components/widgets/Revenue.vue'
+import Revenues from '../components/widgets/Revenues.vue'
 import LostDeal from '../components/widgets/LostDeal.vue'
 import Quartergoal from '../components/widgets/Quartergoal.vue'
 import CustomersList from '../components/widgets/CustomersList.vue'
@@ -40,7 +40,8 @@ import NewDeals from '../components/widgets/NewDeals.vue'
 
 /* Top row of widgets */
 .top-widgets {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
@@ -48,6 +49,13 @@ import NewDeals from '../components/widgets/NewDeals.vue'
 .top-widgets > * {
   flex: 1;
   min-width: 0;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Middle section: Customers + Growth */
@@ -62,7 +70,7 @@ import NewDeals from '../components/widgets/NewDeals.vue'
 .bottom-widgets {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 0.75rem;
 }
 
 /* Card styling for bottom widgets */
@@ -74,4 +82,11 @@ import NewDeals from '../components/widgets/NewDeals.vue'
   flex-direction: column;
   justify-content: space-between;
 }
+
+@media (max-width: 768px) {
+  .top-widgets {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>

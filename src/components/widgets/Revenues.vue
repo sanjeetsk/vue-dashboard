@@ -1,13 +1,14 @@
 <!-- src/components/widgets/Revenue.vue -->
 <template>
-  <div class="lostdeal-card">
-    <div class="header">Lost deals</div>
+  <div class="revenues-card">
+    <div class="header">Revenues</div>
     <div class="percentage">
-      <span class="value">4%</span>
+      <span class="value">15%</span>
+      <span class="arrow">↗</span>
     </div>
-    <p class="description">You closed 96 out of 100 deals</p>
+    <p class="description">Increase compared to last week</p>
     <div class="link">
-      <a href="#" class="link">Lost deals →</a>
+      <a href="#">Revenues report →</a>
     </div>
   </div>
 </template>
@@ -17,12 +18,12 @@
 </script>
 
 <style scoped>
-.lostdeal-card {
+.revenues-card {
   width: 300px;
   background-color: #fff;
   border-radius: 15px;
   padding: 24px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   font-family: 'Inter', sans-serif;
 }
 
@@ -45,6 +46,12 @@
   color: #111;
 }
 
+.arrow {
+  color: #22c55e;
+  font-size: 20px;
+  margin-left: 6px;
+}
+
 .description {
   font-size: 12px;
   color: #555;
@@ -60,7 +67,7 @@
 
 .link a {
   font-size: 14px;
-  color: #8a5c00;
+  color: #8a5c00; /* Brownish */
   font-weight: 400;
   text-decoration: none;
 }

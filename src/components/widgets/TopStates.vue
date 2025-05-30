@@ -30,10 +30,10 @@ const states = [
 }
 
 .title {
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #111;
-  margin-bottom: 1.5rem;
+  margin: 0rem 0rem 1.5rem 0rem;
 }
 
 .state-bar {

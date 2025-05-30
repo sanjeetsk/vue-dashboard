@@ -88,7 +88,7 @@ const chats = [
 }
 
 .chat-title {
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #111;
   margin: 0;
@@ -110,7 +110,7 @@ const chats = [
   position: relative;
   width: 48px;
   height: 48px;
-  border-radius: 50%;
+  border-radius: 15%;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -122,18 +122,18 @@ const chats = [
 }
 
 .chat-avatar {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   object-fit: cover;
   border-radius: 50%;
 }
 
 .unread-indicator {
   position: absolute;
-  top: 2px;
-  right: 2px;
-  width: 10px;
-  height: 10px;
+  top: 8px;
+  right: 8px;
+  width: 5px;
+  height: 5px;
   background: #ef4444;
   border: 2px solid #fff;
   border-radius: 50%;
@@ -141,9 +141,9 @@ const chats = [
 
 .all-messages-link {
   margin-top: 1.5rem;
-  font-size: 0.875rem;
-  color: #c58b34;
-  font-weight: 500;
+  font-size: 14px;
+  color: #8a5c00;
+  font-weight: 400;
   text-decoration: none;
   transition: text-decoration 0.2s;
 }

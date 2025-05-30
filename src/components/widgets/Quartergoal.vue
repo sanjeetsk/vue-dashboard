@@ -83,6 +83,7 @@ export default {
 .title {
   font-size: 1.2rem;
   font-weight: 600;
+  color: #111;
   margin: 0;
 }
 
@@ -91,9 +92,13 @@ export default {
 }
 
 .link {
-  color: #d88c00;
-  font-weight: 500;
+  color: #8a5c00;
+  font-weight: 400;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 14px;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 </style>

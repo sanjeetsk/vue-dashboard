@@ -1,10 +1,12 @@
 <template>
   <div class="growth-section">
     <div class="growth-card">
-      <h2>Growth</h2>
-      <select v-model="selectedPeriod">
-        <option value="yearly">Yearly</option>
-      </select>
+      <div class="header">
+        <h2>Growth</h2>
+        <select v-model="selectedPeriod" class="period-select">
+          <option value="yearly">Yearly</option>
+        </select>
+      </div>
       <canvas ref="growthCanvas"></canvas>
     </div>
 
@@ -108,21 +110,27 @@ onMounted(() => {
   flex-direction: column;
 }
 
-.growth-card h2 {
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.header h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #222;
 }
 
-.growth-card select {
-  align-self: flex-end;
-  padding: 0.4rem 0.6rem;
+.period-select {
+  padding: 0.5rem;
   border-radius: 8px;
-  border: 1px solid #ddd;
-  background: #f9f9f9;
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
+  color: #555;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: none;
 }
 
 .growth-card canvas {
@@ -170,7 +178,7 @@ onMounted(() => {
   margin-top: 0.2rem;
 }
 
-.one{
+.one {
   color: #222;
   font-size: 0.75rem;
 }
@@ -189,14 +197,14 @@ onMounted(() => {
   object-fit: cover;
 }
 
-.buyer-data strong{
-display: block;
+.buyer-data strong {
+  display: block;
   font-weight: 600;
   color: #1a1a1a;
   font-size: 0.7rem;
 }
 
-.buyer-data p{
+.buyer-data p {
   margin: 0;
   font-size: 0.5rem;
   color: #666;
