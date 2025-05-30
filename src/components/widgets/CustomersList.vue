@@ -118,8 +118,8 @@ const sortedCustomers = computed(() => {
 }
 
 .avatar {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 1rem;
@@ -134,12 +134,12 @@ const sortedCustomers = computed(() => {
   display: block;
   font-weight: 500;
   margin-bottom: 0.25rem;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .info p {
-  color: #777;
-  font-size: 0.9rem;
+  color: #333;
+  font-size: 0.7rem;
 }
 
 .actions {
@@ -152,7 +152,7 @@ const sortedCustomers = computed(() => {
 
 .footer {
   text-align: left;
-  margin-top: 2rem;
+  margin: 3rem 0 0 1rem;
 }
 
 .footer a {

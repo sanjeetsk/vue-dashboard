@@ -8,23 +8,60 @@
 
     <!-- Search Bar -->
     <div class="search-bar">
-      <input type="text" placeholder="Search..." />
+      <input type="text" placeholder="Search" />
     </div>
 
-    <!-- Navigation Items -->
-    <div class="nav-section">
-      <div class="nav-item"><span>📊</span> Dashboard</div>
-      <div class="nav-item"><span>👥</span> Customers</div>
-      <div class="nav-item"><span>📄</span> All reports</div>
-      <div class="nav-item"><span>🌍</span> Geography</div>
-      <div class="nav-item"><span>💬</span> Conversations</div>
-      <div class="nav-item"><span>💼</span> Deals</div>
-      <div class="nav-item"><span>📤</span> Export</div>
-      <div class="nav-spacer"></div>
+    <!-- Navigation -->
+    <div class="nav">
+      <div class="nav-item" :class="{ active: activeItem === 'Dashboard' }" @click="setActive('Dashboard')">
+        <span class="icon">📊</span>
+        Dashboard
+      </div>
+
+      <!-- Customers with right arrow -->
+      <div class="nav-item customers-row" :class="{ active: activeItem === 'Customers' || isCustomersOpen }"
+        @click="toggleCustomers">
+        <div class="left">
+          <span class="icon">👥</span>
+          <span class="label">Customers</span>
+        </div>
+        <span class="arrow">{{ isCustomersOpen ? '∧' : 'v' }}</span>
+      </div>
+
+      <div v-if="isCustomersOpen" class="sub-menu">
+        <div class="sub-item">Current</div>
+        <div class="sub-item">New</div>
+        <div class="sub-item">Negotiating</div>
+      </div>
+
+      <div class="nav-item" :class="{ active: activeItem === 'All reports' }" @click="setActive('All reports')">
+        <span class="icon">📄</span>
+        All reports
+      </div>
+
+      <div class="nav-item" :class="{ active: activeItem === 'Geography' }" @click="setActive('Geography')">
+        <span class="icon">🌍</span>
+        Geography
+      </div>
+
+      <div class="nav-item" :class="{ active: activeItem === 'Conversations' }" @click="setActive('Conversations')">
+        <span class="icon">💬</span>
+        Conversations
+      </div>
+
+      <div class="nav-item" :class="{ active: activeItem === 'Deals' }" @click="setActive('Deals')">
+        <span class="icon">💼</span>
+        Deals
+      </div>
+
+      <div class="nav-item" :class="{ active: activeItem === 'Export' }" @click="setActive('Export')">
+        <span class="icon">📤</span>
+        Export
+      </div>
     </div>
 
-    <!-- Bottom User Info -->
-    <div class="bottom-section">
+    <!-- Bottom -->
+    <div class="bottom-actions">
       <div class="user-info">
         <img src="https://i.pravatar.cc/40" alt="User" />
         <div class="user-details">
@@ -32,9 +69,13 @@
           <div class="badge">Admin</div>
         </div>
       </div>
-      <div class="actions">
-        <div class="action-item"><span>⚙️</span> Settings</div>
-        <div class="action-item logout"><span>🔓</span> Logout</div>
+      <div class="nav-item">
+        <span class="icon">⚙️</span>
+        Settings
+      </div>
+      <div class="nav-item logout">
+        <span class="icon">🔓</span>
+        Logout
       </div>
     </div>
   </div>
@@ -43,13 +84,26 @@
 <script>
 export default {
   name: "Sidebar",
+  data() {
+    return {
+      activeItem: "Dashboard",
+      isCustomersOpen: false, // open by default like in the screenshot
+    };
+  },
+  methods: {
+    setActive(item) {
+      this.activeItem = item;
+    },
+    toggleCustomers() {
+      this.isCustomersOpen = !this.isCustomersOpen;
+    },
+  },
 };
 </script>
 
 <style scoped>
 .sidebar {
   width: 260px;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -61,121 +115,134 @@ export default {
   background-color: #fff;
 }
 
-/* Logo */
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 
 .logo-icon {
-  font-size: 24px;
+  font-size: 22px;
+  margin-right: 8px;
 }
 
-/* Search Bar */
-.search-bar {
-  margin-bottom: 16px;
+.logo-text {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .search-bar input {
-  width: 100%;
-  padding: 10px 16px;
+  width: 90%;
+  padding: 8px 12px;
   border-radius: 999px;
   border: 1px solid #ddd;
-  outline: none;
+  background-color: #fff;
   font-size: 14px;
-  box-sizing: border-box;
+  outline: none;
+  margin-bottom: 24px;
 }
 
-/* Navigation */
-.nav-section {
+.nav {
   flex: 1;
-  overflow-y: auto;
-  padding-right: 4px;
-  scrollbar-width: none;
-}
-
-.nav-section::-webkit-scrollbar {
-  display: none;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px;
-  border-radius: 12px;
-  font-size: 15px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #555;
   cursor: pointer;
-  transition: background 0.2s ease;
-  color: #333;
+  transition: background 0.2s, color 0.2s;
+  margin-bottom: 4px;
 }
 
+.nav-item .icon {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.nav-item.active,
 .nav-item:hover {
-  background-color: #f5f5f5;
+  background-color: #fff6e5;
+  color: #f59e0b;
+  /* orange-500 */
 }
 
-.nav-spacer {
-  height: 24px;
+/* Customers row layout */
+.customers-row {
+  justify-content: space-between;
 }
 
-/* Bottom Section */
-.bottom-section {
-  padding-top: 12px;
+.customers-row .left {
+  display: flex;
+  align-items: center;
 }
+
+.customers-row .arrow {
+  font-size: 12px;
+}
+
+.sub-menu {
+  background-color: #fff6e5;
+  padding: 7px 40px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.sub-item {
+  padding: 6px 0;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+}
+
+.sub-item:hover {
+  color: #f59e0b;
+}
+
+/* .bottom-actions {
+    border-top: 1px solid #eee;
+    padding-top: 12px;
+} */
 
 /* User Info */
 .user-info {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 0 12px;
   margin-bottom: 12px;
 }
 
 .user-info img {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
 }
 
 .user-details .name {
   font-weight: 600;
+  color: #333;
+  font-size: 0.8rem;
 }
 
 .badge {
   background-color: #ffecb3;
-  color: #b77b00;
-  font-size: 12px;
+  color: #b76e00;
+  font-size: 0.7rem;
   padding: 2px 8px;
   border-radius: 999px;
   margin-top: 4px;
   display: inline-block;
 }
 
-/* Actions */
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.action-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.action-item:hover {
-  color: #555;
-}
-
 .logout {
   color: #e53935;
+}
+
+.logout:hover {
+  color: #555;
 }
 </style>

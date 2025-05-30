@@ -140,7 +140,7 @@ const chats = [
 }
 
 .all-messages-link {
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
   font-size: 14px;
   color: #8a5c00;
   font-weight: 400;

@@ -17,13 +17,11 @@ import Sidebar from './components/Sidebar.vue'
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .app-container {
   display: flex;
-  height: 100vh;
   font-family: "Segoe UI", sans-serif;
   overflow: hidden;
 }
@@ -32,15 +30,13 @@ html, body {
   display: flex;
   width: 260px;
   background: #f4f4f4;
-  padding: 20px 0 16px 16px;
-  overflow: scroll;
-  scrollbar-width: none;
+  padding: 15px 0 15px 15px;
 }
 
 .main-content {
   flex: 1;
-  padding: 20px;
+  padding: 15px;
   background: #f4f4f4;
-  overflow-y: auto;
+  height: 100%;
 }
 </style>
