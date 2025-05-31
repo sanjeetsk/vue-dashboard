@@ -26,7 +26,7 @@ const states = [
 .top-states-card {
   background-color: #fff;
   border-radius: 15px;
-  padding: 1rem;
+  padding: 1rem 1rem 0.5rem 1rem;
 }
 
 .title {
@@ -47,16 +47,16 @@ const states = [
   align-items: center;
   padding: 0.5rem 0.75rem;
   background: linear-gradient(to right, #fbc67b, #fff6e7);
-  border-radius: 8px;
+  border-radius: 5px;
   font-weight: 600;
   color: #111;
 }
 
 .state-name {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 
 .state-value {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 }
 </style>

@@ -39,7 +39,6 @@ const deals = [
 
 .deal-list {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -48,11 +47,11 @@ const deals = [
 .deal-item {
   display: inline-flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 0.5rem;
   background-color: #fff7e6;
   border-radius: 12px;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.7rem;
+  padding: 0.9rem 0.75rem;
+  font-size: 0.8rem;
   font-weight: 400;
   color: #734a00;
   white-space: nowrap;

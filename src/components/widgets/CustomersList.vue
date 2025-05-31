@@ -22,6 +22,7 @@
           <span>💬</span>
           <span>⭐</span>
           <span>✏️</span>
+          <span class="divider"></span>
           <span>⋮</span>
         </div>
       </div>
@@ -72,7 +73,7 @@ const sortedCustomers = computed(() => {
 .customer-card {
   background: white;
   border-radius: 15px;
-  padding: 1rem;
+  padding: 1.5rem 1.5rem 1.5rem 0.5rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
@@ -81,6 +82,7 @@ const sortedCustomers = computed(() => {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.2rem;
+  padding-left: 1rem;
 }
 
 .header h2 {
@@ -108,7 +110,7 @@ const sortedCustomers = computed(() => {
 .customer-item {
   display: flex;
   align-items: center;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1rem;  /* apply consistent horizontal padding to ALL items */
   border-radius: 12px;
   transition: background 0.3s;
 }
@@ -144,15 +146,28 @@ const sortedCustomers = computed(() => {
 
 .actions {
   display: flex;
-  gap: 0.75rem;
-  font-size: 0.8rem;
-  cursor: pointer;
-  color: #555;
+  gap: 1rem;
+  font-size: 1rem;
+  color: #5c3d00; /* deep brown like in the image */
+  align-items: center;
+}
+
+.actions span {
+  display: flex;
+  align-items: center;
+}
+
+.divider{
+  width: 1px;
+  height: 20px;
+  background-color: #e3d5ba; /* soft beige vertical line */
+  margin: 0 0.5rem;
 }
 
 .footer {
   text-align: left;
-  margin: 3rem 0 0 1rem;
+  margin: 3rem 0 0 0rem;
+  padding-left: 1rem;
 }
 
 .footer a {

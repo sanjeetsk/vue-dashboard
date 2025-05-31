@@ -43,7 +43,7 @@ import NewDeals from '../components/widgets/NewDeals.vue'
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .top-widgets > * {
@@ -62,14 +62,14 @@ import NewDeals from '../components/widgets/NewDeals.vue'
 .middle-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 /* Bottom widgets row styled as per Figma */
 .bottom-widgets {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1fr 1.3fr;
   gap: 0.75rem;
 }
 

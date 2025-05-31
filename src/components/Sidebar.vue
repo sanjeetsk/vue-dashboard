@@ -144,6 +144,9 @@ export default {
 
 .nav {
   flex: 1;
+  overflow: scroll;
+  scrollbar-width: none;
+  ;
 }
 
 .nav-item {
@@ -202,10 +205,9 @@ export default {
   color: #f59e0b;
 }
 
-/* .bottom-actions {
-    border-top: 1px solid #eee;
-    padding-top: 12px;
-} */
+.bottom-actions {
+  padding-top: 1.2rem;
+}
 
 /* User Info */
 .user-info {

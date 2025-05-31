@@ -58,10 +58,11 @@ onMounted(() => {
         data: [9000, 15000, 35000, 50000, 20000, 30000, 60000, 95000],
         borderColor: '#00cc00',   // bright green
         backgroundColor: 'rgba(0, 204, 0, 0.1)',  // light green fill
-        borderDash: [5, 5],       // dashed line
+        borderDash: [2, 2],       // dashed line
         fill: true,
         tension: 0,               // no smoothing → discrete/straight
-        pointRadius: 0            // no point dots
+        pointRadius: 0,            // no point dots
+        borderWidth: 1,
       }]
     },
     options: {
@@ -73,8 +74,16 @@ onMounted(() => {
       scales: {
         y: {
           beginAtZero: true,
+          min: 0,
+          max: 100000,
           ticks: {
-            callback: (value) => value >= 1000 ? `${value / 1000}k` : value
+            callback: (value) => {
+              const allowedTicks = [0, 10000, 20000, 50000, 100000]
+              if (allowedTicks.includes(value)) {
+                return value >= 1000 ? `${value / 1000}k` : value
+              }
+              return ''
+            }
           },
           grid: {
             drawBorder: false,
@@ -88,6 +97,7 @@ onMounted(() => {
           }
         }
       }
+
     }
   })
 })
@@ -98,7 +108,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   height: 100%;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .growth-card {
@@ -139,7 +149,7 @@ onMounted(() => {
 
 .summary-cards {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .summary-card {

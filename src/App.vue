@@ -17,6 +17,8 @@ import Sidebar from './components/Sidebar.vue'
 html, body {
   margin: 0;
   padding: 0;
+  height: 100vh;
+  overflow: hidden;
   box-sizing: border-box;
 }
 
@@ -29,6 +31,7 @@ html, body {
 .sidebar-container {
   display: flex;
   width: 260px;
+  height: 95vh;
   background: #f4f4f4;
   padding: 15px 0 15px 15px;
 }
@@ -37,6 +40,8 @@ html, body {
   flex: 1;
   padding: 15px;
   background: #f4f4f4;
-  height: 100%;
+  height: 95vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 </style>
