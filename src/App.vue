@@ -1,6 +1,9 @@
 <template>
   <div class="app-container" :class="{ 'sidebar-collapsed': isSidebarCollapsed }">
     <div class="sidebar-container">
+      <Sidebar :collapsed="isSidebarCollapsed" />
+    </div>
+    <div class="main-content">
       <button class="toggle-sidebar" @click="toggleSidebar">
         <span class="hamburger">
           <span></span>
@@ -8,9 +11,6 @@
           <span></span>
         </span>
       </button>
-      <Sidebar :collapsed="isSidebarCollapsed" />
-    </div>
-    <div class="main-content">
       <router-view />
     </div>
   </div>
@@ -53,10 +53,10 @@ html, body {
 
 .toggle-sidebar {
   display: none;
-  position: absolute;
-  right: 15px;
+  position: fixed;
+  left: 15px;
   top: 15px;
-  z-index: 100;
+  z-index: 1000;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -110,7 +110,7 @@ html, body {
     width: 260px;
     position: fixed;
     height: 100vh;
-    z-index: 1000;
+    z-index: 999;
     transform: translateX(0);
     transition: transform 0.3s ease;
     background: white;
@@ -124,12 +124,13 @@ html, body {
   .main-content {
     margin-left: 0;
     width: 100%;
+    padding-top: 60px;
   }
 }
 
 @media (max-width: 768px) {
   .main-content {
-    padding: 10px;
+    padding: 60px 10px 10px;
   }
 }
 </style>
