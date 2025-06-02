@@ -46,18 +46,6 @@ import NewDeals from '../components/widgets/NewDeals.vue'
   margin-bottom: 0.75rem;
 }
 
-.top-widgets > * {
-  flex: 1;
-  min-width: 0;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 /* Middle section: Customers + Growth */
 .middle-section {
   display: grid;
@@ -66,7 +54,7 @@ import NewDeals from '../components/widgets/NewDeals.vue'
   margin-bottom: 0.75rem;
 }
 
-/* Bottom widgets row styled as per Figma */
+/* Bottom widgets row */
 .bottom-widgets {
   display: grid;
   grid-template-columns: 1fr 1fr 1.3fr;
@@ -83,10 +71,24 @@ import NewDeals from '../components/widgets/NewDeals.vue'
   justify-content: space-between;
 }
 
+/* Responsive layouts */
+@media (max-width: 1200px) {
+  .bottom-widgets {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .top-widgets {
     grid-template-columns: 1fr;
   }
+  
+  .middle-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .bottom-widgets {
+    grid-template-columns: 1fr;
+  }
 }
-
 </style>

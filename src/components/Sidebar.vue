@@ -1,13 +1,13 @@
 <template>
-  <div class="sidebar">
+  <div class="sidebar" :class="{ collapsed }">
     <!-- Logo -->
     <div class="logo">
       <span class="logo-icon">🍊</span>
-      <span class="logo-text">OrangeFarm</span>
+      <span class="logo-text" v-if="!collapsed">OrangeFarm</span>
     </div>
 
     <!-- Search Bar -->
-    <div class="search-bar">
+    <div class="search-bar" v-if="!collapsed">
       <input type="text" placeholder="Search" />
     </div>
 
@@ -15,20 +15,19 @@
     <div class="nav">
       <div class="nav-item" :class="{ active: activeItem === 'Dashboard' }" @click="setActive('Dashboard')">
         <span class="icon">📊</span>
-        Dashboard
+        <span class="label" v-if="!collapsed">Dashboard</span>
       </div>
 
-      <!-- Customers with right arrow -->
       <div class="nav-item customers-row" :class="{ active: activeItem === 'Customers' || isCustomersOpen }"
         @click="toggleCustomers">
         <div class="left">
           <span class="icon">👥</span>
-          <span class="label">Customers</span>
+          <span class="label" v-if="!collapsed">Customers</span>
         </div>
-        <span class="arrow">{{ isCustomersOpen ? '∧' : 'v' }}</span>
+        <span class="arrow" v-if="!collapsed">{{ isCustomersOpen ? '∧' : 'v' }}</span>
       </div>
 
-      <div v-if="isCustomersOpen" class="sub-menu">
+      <div v-if="isCustomersOpen && !collapsed" class="sub-menu">
         <div class="sub-item">Current</div>
         <div class="sub-item">New</div>
         <div class="sub-item">Negotiating</div>
@@ -36,46 +35,46 @@
 
       <div class="nav-item" :class="{ active: activeItem === 'All reports' }" @click="setActive('All reports')">
         <span class="icon">📄</span>
-        All reports
+        <span class="label" v-if="!collapsed">All reports</span>
       </div>
 
       <div class="nav-item" :class="{ active: activeItem === 'Geography' }" @click="setActive('Geography')">
         <span class="icon">🌍</span>
-        Geography
+        <span class="label" v-if="!collapsed">Geography</span>
       </div>
 
       <div class="nav-item" :class="{ active: activeItem === 'Conversations' }" @click="setActive('Conversations')">
         <span class="icon">💬</span>
-        Conversations
+        <span class="label" v-if="!collapsed">Conversations</span>
       </div>
 
       <div class="nav-item" :class="{ active: activeItem === 'Deals' }" @click="setActive('Deals')">
         <span class="icon">💼</span>
-        Deals
+        <span class="label" v-if="!collapsed">Deals</span>
       </div>
 
       <div class="nav-item" :class="{ active: activeItem === 'Export' }" @click="setActive('Export')">
         <span class="icon">📤</span>
-        Export
+        <span class="label" v-if="!collapsed">Export</span>
       </div>
     </div>
 
     <!-- Bottom -->
     <div class="bottom-actions">
-      <div class="user-info">
+      <div class="user-info" :class="{ collapsed }">
         <img src="https://i.pravatar.cc/40" alt="User" />
-        <div class="user-details">
+        <div class="user-details" v-if="!collapsed">
           <div class="name">Gustavo Xavier</div>
           <div class="badge">Admin</div>
         </div>
       </div>
       <div class="nav-item">
         <span class="icon">⚙️</span>
-        Settings
+        <span class="label" v-if="!collapsed">Settings</span>
       </div>
       <div class="nav-item logout">
         <span class="icon">🔓</span>
-        Logout
+        <span class="label" v-if="!collapsed">Logout</span>
       </div>
     </div>
   </div>
@@ -84,10 +83,16 @@
 <script>
 export default {
   name: "Sidebar",
+  props: {
+    collapsed: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       activeItem: "Dashboard",
-      isCustomersOpen: false, // open by default like in the screenshot
+      isCustomersOpen: false,
     };
   },
   methods: {
@@ -113,6 +118,12 @@ export default {
   box-sizing: border-box;
   font-family: "Segoe UI", sans-serif;
   background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+  padding: 16px 8px;
 }
 
 .logo {
@@ -132,7 +143,7 @@ export default {
 }
 
 .search-bar input {
-  width: 90%;
+  width: 100%;
   padding: 8px 12px;
   border-radius: 999px;
   border: 1px solid #ddd;
@@ -144,15 +155,14 @@ export default {
 
 .nav {
   flex: 1;
-  overflow: scroll;
+  overflow: auto;
   scrollbar-width: none;
-  ;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  padding: 7px 12px;
+  padding: 10px 12px;
   border-radius: 8px;
   font-size: 14px;
   color: #555;
@@ -170,10 +180,8 @@ export default {
 .nav-item:hover {
   background-color: #fff6e5;
   color: #f59e0b;
-  /* orange-500 */
 }
 
-/* Customers row layout */
 .customers-row {
   justify-content: space-between;
 }
@@ -183,15 +191,16 @@ export default {
   align-items: center;
 }
 
-.customers-row .arrow {
+.arrow {
   font-size: 12px;
 }
 
 .sub-menu {
   background-color: #fff6e5;
-  padding: 7px 40px;
+  padding: 8px 12px;
   border-radius: 8px;
   margin-bottom: 8px;
+  margin-left: 8px;
 }
 
 .sub-item {
@@ -206,16 +215,21 @@ export default {
 }
 
 .bottom-actions {
-  padding-top: 1.2rem;
+  border-top: 1px solid #eee;
+  padding-top: 12px;
 }
 
-/* User Info */
 .user-info {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 0 12px;
   margin-bottom: 12px;
+  padding: 0 12px;
+}
+
+.user-info.collapsed {
+  justify-content: center;
+  padding: 0;
 }
 
 .user-info img {
@@ -226,14 +240,13 @@ export default {
 
 .user-details .name {
   font-weight: 600;
-  color: #333;
   font-size: 0.8rem;
 }
 
 .badge {
   background-color: #ffecb3;
-  color: #b76e00;
-  font-size: 0.7rem;
+  color: #b77b00;
+  font-size: 12px;
   padding: 2px 8px;
   border-radius: 999px;
   margin-top: 4px;
@@ -246,5 +259,11 @@ export default {
 
 .logout:hover {
   color: #555;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 260px;
+  }
 }
 </style>
