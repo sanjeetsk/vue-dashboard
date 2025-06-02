@@ -5,7 +5,7 @@
     </div>
     <div class="main-content">
       <button class="toggle-sidebar" @click="toggleSidebar">
-        <span class="hamburger">
+        <span class="hamburger" :class="{ 'is-active': !isSidebarCollapsed }">
           <span></span>
           <span></span>
           <span></span>
@@ -79,15 +79,15 @@ html, body {
   transition: all 0.3s ease;
 }
 
-.sidebar-collapsed .hamburger span:nth-child(1) {
+.hamburger.is-active span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
 
-.sidebar-collapsed .hamburger span:nth-child(2) {
+.hamburger.is-active span:nth-child(2) {
   opacity: 0;
 }
 
-.sidebar-collapsed .hamburger span:nth-child(3) {
+.hamburger.is-active span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
 
