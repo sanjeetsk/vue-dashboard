@@ -116,7 +116,8 @@ body {
   .sidebar-container {
     width: 260px;
     position: fixed;
-    height: 95vh;
+    height: 90vh;
+    border-radius: 15px;
     z-index: 999;
     transform: translateX(0);
     transition: transform 0.3s ease;
