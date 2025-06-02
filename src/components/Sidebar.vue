@@ -112,23 +112,23 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 16px;
-  border-radius: 15px;
-  overflow: hidden;
+  height: 100%;
   box-sizing: border-box;
   font-family: "Segoe UI", sans-serif;
   background-color: #fff;
   transition: width 0.3s ease;
+  padding-top: 60px;
 }
 
 .sidebar.collapsed {
   width: 80px;
-  padding: 16px 8px;
+  padding: 60px 8px 16px;
 }
 
 .logo {
   display: flex;
   align-items: center;
+  padding: 0 16px;
   margin-bottom: 20px;
 }
 
@@ -142,38 +142,43 @@ export default {
   font-weight: 600;
 }
 
+.search-bar {
+  padding: 0 16px;
+  margin-bottom: 24px;
+}
+
 .search-bar input {
   width: 100%;
   padding: 8px 12px;
-  border-radius: 999px;
+  border-radius: 8px;
   border: 1px solid #ddd;
-  background-color: #fff;
+  background-color: #f8f8f8;
   font-size: 14px;
   outline: none;
-  margin-bottom: 24px;
 }
 
 .nav {
   flex: 1;
   overflow: auto;
   scrollbar-width: none;
+  padding: 0 16px;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  padding: 10px 12px;
+  padding: 12px;
   border-radius: 8px;
   font-size: 14px;
   color: #555;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: all 0.2s ease;
   margin-bottom: 4px;
 }
 
 .nav-item .icon {
   width: 20px;
-  margin-right: 10px;
+  margin-right: 12px;
 }
 
 .nav-item.active,
@@ -204,43 +209,54 @@ export default {
 }
 
 .sub-item {
-  padding: 6px 0;
+  padding: 8px 12px;
   font-size: 13px;
   color: #555;
   cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
 .sub-item:hover {
+  background-color: rgba(245, 158, 11, 0.1);
   color: #f59e0b;
 }
 
 .bottom-actions {
   border-top: 1px solid #eee;
-  padding-top: 12px;
+  padding: 16px;
 }
 
 .user-info {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-  padding: 0 12px;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.user-info:hover {
+  background-color: #f8f8f8;
 }
 
 .user-info.collapsed {
   justify-content: center;
-  padding: 0;
+  padding: 8px 0;
 }
 
 .user-info img {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .user-details .name {
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 14px;
+  color: #333;
 }
 
 .badge {
@@ -258,12 +274,19 @@ export default {
 }
 
 .logout:hover {
-  color: #555;
+  color: #c62828;
+  background-color: #ffebee;
 }
 
 @media (max-width: 768px) {
   .sidebar {
     width: 260px;
+  }
+  
+  .sidebar.collapsed {
+    width: 0;
+    padding: 60px 0 16px;
+    overflow: hidden;
   }
 }
 </style>

@@ -2,7 +2,8 @@
   <div class="app-container" :class="{ 'sidebar-collapsed': isSidebarCollapsed }">
     <div class="sidebar-container">
       <button class="toggle-sidebar" @click="toggleSidebar">
-        {{ isSidebarCollapsed ? '→' : '←' }}
+        <span v-if="isSidebarCollapsed" class="icon">☰</span>
+        <span v-else class="icon">✕</span>
       </button>
       <Sidebar :collapsed="isSidebarCollapsed" />
     </div>
@@ -44,23 +45,24 @@ html, body {
   display: flex;
   transition: width 0.3s ease;
   background: #f4f4f4;
-  padding: 15px 0 15px 15px;
+  padding: 15px 0;
 }
 
 .toggle-sidebar {
   display: none;
   position: absolute;
-  right: -30px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 15px;
+  top: 15px;
   z-index: 100;
-  background: white;
-  border: 1px solid #eee;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  background: transparent;
+  border: none;
   cursor: pointer;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  padding: 8px;
+}
+
+.toggle-sidebar .icon {
+  font-size: 24px;
+  color: #333;
 }
 
 .main-content {
@@ -85,6 +87,8 @@ html, body {
     z-index: 1000;
     transform: translateX(0);
     transition: transform 0.3s ease;
+    background: white;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
   }
 
   .sidebar-collapsed .sidebar-container {
