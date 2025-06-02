@@ -9,8 +9,11 @@
     </div>
 
     <div class="customer-list">
-      <div v-for="(customer, index) in sortedCustomers" :key="index"
-        :class="['customer-item', { selected: customer.name === 'Maggie Johnson' }]">
+      <div
+        v-for="(customer, index) in sortedCustomers"
+        :key="index"
+        :class="['customer-item', { selected: customer.name === 'Maggie Johnson' }]"
+      >
         <img :src="customer.image" class="avatar" />
         <div class="info">
           <strong>{{ customer.name }}</strong>
@@ -19,11 +22,11 @@
 
         <!-- Show icons only for Maggie Johnson -->
         <div v-if="customer.name === 'Maggie Johnson'" class="actions">
-          <span>💬</span>
-          <span>⭐</span>
-          <span>✏️</span>
+          <MessageCircle class="icon" />
+          <Star class="icon" />
+          <Pencil class="icon" />
           <span class="divider"></span>
-          <span>⋮</span>
+          <MoreVertical class="icon" />
         </div>
       </div>
     </div>
@@ -36,6 +39,12 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import {
+  MessageCircle,
+  Star,
+  Pencil,
+  MoreVertical,
+} from 'lucide-vue-next'
 
 const sortOrder = ref('newest')
 
@@ -57,8 +66,8 @@ const customers = ref([
   },
   {
     name: 'Jenna Sullivan',
-    company: 'Farm Fresh Co.',
-    image: 'https://randomuser.me/api/portraits/women/68.jpg', // You can change the image as needed
+    company: 'Walmart',
+    image: 'https://randomuser.me/api/portraits/women/68.jpg',
   },
 ])
 
@@ -110,7 +119,7 @@ const sortedCustomers = computed(() => {
 .customer-item {
   display: flex;
   align-items: center;
-  padding: 0.75rem 1rem;  /* apply consistent horizontal padding to ALL items */
+  padding: 0.75rem 1rem;
   border-radius: 12px;
   transition: background 0.3s;
 }
@@ -129,45 +138,49 @@ const sortedCustomers = computed(() => {
 
 .info {
   flex: 1;
-  line-height: 0.9vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
 }
 
 .info strong {
-  display: block;
   font-weight: 500;
-  margin-bottom: 0.25rem;
   font-size: 0.9rem;
+  line-height: 1.1;
 }
 
 .info p {
   color: #333;
   font-size: 0.7rem;
+  line-height: 1;
+  margin: 0;
 }
 
 .actions {
   display: flex;
   gap: 1rem;
   font-size: 1rem;
-  color: #5c3d00; /* deep brown like in the image */
+  color: #5c3d00;
   align-items: center;
 }
 
-.actions span {
-  display: flex;
-  align-items: center;
+.icon {
+  width: 16px;
+  height: 16px;
 }
 
-.divider{
+.divider {
   width: 1px;
   height: 20px;
-  background-color: #e3d5ba; /* soft beige vertical line */
+  background-color: #c9b496;
   margin: 0 0.5rem;
 }
 
 .footer {
-  text-align: left;
-  margin: 3rem 0 0 0rem;
+  text-align: left; 
   padding-left: 1rem;
+  margin-top: 1.7rem;
 }
 
 .footer a {

@@ -83,8 +83,23 @@ import NewDeals from '../components/widgets/NewDeals.vue'
   justify-content: space-between;
 }
 
+/* Responsive layouts */
+@media (max-width: 1200px) {
+  .bottom-widgets {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .top-widgets {
+    grid-template-columns: 1fr;
+  }
+  
+  .middle-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .bottom-widgets {
     grid-template-columns: 1fr;
   }
 }

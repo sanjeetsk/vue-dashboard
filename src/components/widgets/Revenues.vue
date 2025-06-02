@@ -19,12 +19,10 @@
 
 <style scoped>
 .revenues-card {
-  width: 300px;
   background-color: #fff;
   border-radius: 15px;
   padding: 24px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-  font-family: 'Inter', sans-serif;
 }
 
 .header {
@@ -67,7 +65,7 @@
 
 .link a {
   font-size: 14px;
-  color: #8a5c00; /* Brownish */
+  color: #8a5c00;
   font-weight: 400;
   text-decoration: none;
 }
@@ -75,4 +73,64 @@
 .link a:hover {
   text-decoration: underline;
 }
+
+/* Responsive styles: tablet and below */
+@media (max-width: 1024px) {
+  .revenues-card {
+    padding: 20px;
+  }
+
+  .header {
+    font-size: 1.1rem;
+  }
+
+  .value {
+    font-size: 28px;
+  }
+
+  .arrow {
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 11px;
+  }
+
+  .link{
+    margin-top: 1rem;
+  }
+
+  .link a {
+    font-size: 13px;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .lostdeal-card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .header {
+    font-size: 1rem;
+  }
+
+  .value {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 10px;
+  }
+
+  .link{
+    margin-top: 1rem;
+  }
+
+  .link a {
+    font-size: 12px;
+  }
+}
+
 </style>

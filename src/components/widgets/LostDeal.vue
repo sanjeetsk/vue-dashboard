@@ -7,7 +7,7 @@
     </div>
     <p class="description">You closed 96 out of 100 deals</p>
     <div class="link">
-      <a href="#" class="link">Lost deals →</a>
+      <a href="#">Lost deals →</a>
     </div>
   </div>
 </template>
@@ -18,12 +18,10 @@
 
 <style scoped>
 .lostdeal-card {
-  width: 300px;
   background-color: #fff;
   border-radius: 15px;
   padding: 24px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  font-family: 'Inter', sans-serif;
 }
 
 .header {
@@ -68,4 +66,60 @@
 .link a:hover {
   text-decoration: underline;
 }
+
+/* Tablet responsiveness */
+@media (max-width: 1024px) {
+  .lostdeal-card {
+    padding: 20px;
+  }
+
+  .header {
+    font-size: 1.1rem;
+  }
+
+  .value {
+    font-size: 28px;
+  }
+
+  .description {
+    font-size: 11px;
+  }
+
+  .link{
+    margin-top: 1rem;
+  }
+
+  .link a {
+    font-size: 13px;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 640px) {
+  .lostdeal-card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .header {
+    font-size: 1rem;
+  }
+
+  .value {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 10px;
+  }
+
+  .link{
+    margin-top: 1rem;
+  }
+
+  .link a {
+    font-size: 12px;
+  }
+}
+
 </style>

@@ -27,7 +27,7 @@ const deals = [
 .new-deals-card {
   background-color: #fff;
   border-radius: 15px;
-  padding: 0 1rem;
+  padding: 0 1rem 1rem 1rem;
 }
 
 .title {
@@ -68,5 +68,28 @@ const deals = [
   font-size: 0.75rem;
   color: #f5a623;
   line-height: 1;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .new-deals-card {
+    padding: 0 0.75rem 0.75rem 0.75rem;
+  }
+
+  .title {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .deal-item {
+    font-size: 0.75rem;
+    padding: 0.6rem 0.6rem;
+  }
+
+  .plus-icon {
+    width: 12px;
+    height: 12px;
+    font-size: 0.65rem;
+  }
 }
 </style>

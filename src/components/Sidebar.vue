@@ -1,104 +1,145 @@
 <template>
-  <div class="sidebar">
-    <!-- Logo -->
+  <div class="sidebar" :class="{ collapsed }">
+    <!-- Top: Logo + Search -->
     <div class="logo">
       <span class="logo-icon">🍊</span>
-      <span class="logo-text">OrangeFarm</span>
+      <span class="logo-text" v-if="!collapsed">OrangeFarm</span>
     </div>
-
-    <!-- Search Bar -->
-    <div class="search-bar">
+    <div class="search-bar" v-if="!collapsed">
       <input type="text" placeholder="Search" />
     </div>
 
-    <!-- Navigation -->
-    <div class="nav">
-      <div class="nav-item" :class="{ active: activeItem === 'Dashboard' }" @click="setActive('Dashboard')">
-        <span class="icon">📊</span>
-        Dashboard
-      </div>
-
-      <!-- Customers with right arrow -->
-      <div class="nav-item customers-row" :class="{ active: activeItem === 'Customers' || isCustomersOpen }"
-        @click="toggleCustomers">
-        <div class="left">
-          <span class="icon">👥</span>
-          <span class="label">Customers</span>
+    <!-- Middle: Navigation & Bottom Fixed Section -->
+    <div class="sidebar-content">
+      <div class="nav">
+        <div
+          class="nav-item"
+          :class="{ active: activeItem === 'Dashboard' }"
+          @click="setActive('Dashboard')"
+        >
+          <LayoutDashboard class="icon" />
+          <span class="text" v-if="!collapsed">Dashboard</span>
         </div>
-        <span class="arrow">{{ isCustomersOpen ? '∧' : 'v' }}</span>
-      </div>
 
-      <div v-if="isCustomersOpen" class="sub-menu">
-        <div class="sub-item">Current</div>
-        <div class="sub-item">New</div>
-        <div class="sub-item">Negotiating</div>
-      </div>
+        <div class="gap" />
 
-      <div class="nav-item" :class="{ active: activeItem === 'All reports' }" @click="setActive('All reports')">
-        <span class="icon">📄</span>
-        All reports
-      </div>
+        <div class="nav-item customers-row" @click="toggleCustomers">
+          <div class="left">
+            <Users class="icon" />
+            <span class="text">Customers</span>
+          </div>
+          <ChevronDown class="chevron" :class="{ rotated: isCustomersOpen }" />
+        </div>
 
-      <div class="nav-item" :class="{ active: activeItem === 'Geography' }" @click="setActive('Geography')">
-        <span class="icon">🌍</span>
-        Geography
-      </div>
+        <div v-if="isCustomersOpen" class="sub-menu">
+          <div class="sub-item">Current</div>
+          <div class="sub-item">New</div>
+          <div class="sub-item">Negotiating</div>
+        </div>
 
-      <div class="nav-item" :class="{ active: activeItem === 'Conversations' }" @click="setActive('Conversations')">
-        <span class="icon">💬</span>
-        Conversations
-      </div>
+        <div class="gap" />
 
-      <div class="nav-item" :class="{ active: activeItem === 'Deals' }" @click="setActive('Deals')">
-        <span class="icon">💼</span>
-        Deals
-      </div>
+        <div
+          class="nav-item"
+          :class="{ active: activeItem === 'All reports' }"
+          @click="setActive('All reports')"
+        >
+          <ClipboardList class="icon" />
+          <span class="text">All reports</span>
+        </div>
 
-      <div class="nav-item" :class="{ active: activeItem === 'Export' }" @click="setActive('Export')">
-        <span class="icon">📤</span>
-        Export
-      </div>
-    </div>
+        <div class="gap" />
 
-    <!-- Bottom -->
-    <div class="bottom-actions">
-      <div class="user-info">
-        <img src="https://i.pravatar.cc/40" alt="User" />
-        <div class="user-details">
-          <div class="name">Gustavo Xavier</div>
-          <div class="badge">Admin</div>
+        <div
+          class="nav-item"
+          :class="{ active: activeItem === 'Geography' }"
+          @click="setActive('Geography')"
+        >
+          <Globe class="icon" />
+          <span class="text">Geography</span>
+        </div>
+
+        <div class="gap" />
+
+        <div
+          class="nav-item"
+          :class="{ active: activeItem === 'Conversations' }"
+          @click="setActive('Conversations')"
+        >
+          <MessageCircle class="icon" />
+          <span class="text">Conversations</span>
+        </div>
+
+        <div class="gap" />
+
+        <div
+          class="nav-item"
+          :class="{ active: activeItem === 'Deals' }"
+          @click="setActive('Deals')"
+        >
+          <Briefcase class="icon" />
+          <span class="text">Deals</span>
+        </div>
+
+        <div class="gap" />
+
+        <div
+          class="nav-item"
+          :class="{ active: activeItem === 'Export' }"
+          @click="setActive('Export')"
+        >
+          <Database class="icon" />
+          <span class="text">Export</span>
         </div>
       </div>
-      <div class="nav-item">
-        <span class="icon">⚙️</span>
-        Settings
-      </div>
-      <div class="nav-item logout">
-        <span class="icon">🔓</span>
-        Logout
+
+      <!-- Bottom Fixed Actions -->
+      <div class="bottom-actions">
+        <div class="user-info">
+          <img src="https://i.pravatar.cc/40" alt="User" />
+          <div class="user-details">
+            <div class="name">Gustavo Xavier</div>
+            <div class="badge">Admin</div>
+          </div>
+        </div>
+        <div class="nav-item">
+          <Settings class="icon" />
+          <span class="text">Settings</span>
+        </div>
+        <div class="nav-item logout">
+          <LogOut class="icon" />
+          <span class="text">Logout</span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "Sidebar",
-  data() {
-    return {
-      activeItem: "Dashboard",
-      isCustomersOpen: false, // open by default like in the screenshot
-    };
-  },
-  methods: {
-    setActive(item) {
-      this.activeItem = item;
-    },
-    toggleCustomers() {
-      this.isCustomersOpen = !this.isCustomersOpen;
-    },
-  },
-};
+<script setup>
+import {
+  LayoutDashboard,
+  Users,
+  ClipboardList,
+  Globe,
+  MessageCircle,
+  Briefcase,
+  Database,
+  Settings,
+  LogOut,
+  ChevronDown,
+} from 'lucide-vue-next'
+import { ref } from 'vue'
+
+const activeItem = ref('Dashboard')
+const isCustomersOpen = ref(false)
+
+function setActive(item) {
+  activeItem.value = item
+}
+function toggleCustomers() {
+  isCustomersOpen.value = !isCustomersOpen.value
+}
+
 </script>
 
 <style scoped>
@@ -106,14 +147,25 @@ export default {
   width: 260px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 16px;
   border-radius: 15px;
   overflow: hidden;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
   background-color: #fff;
 }
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+  padding: 60px 8px 16px;
+}
+
 
 .logo {
   display: flex;
@@ -144,9 +196,14 @@ export default {
 
 .nav {
   flex: 1;
-  overflow: scroll;
-  scrollbar-width: none;
-  ;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+/* Scrollbar hidden (but scrollable) */
+.nav::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .nav-item {
@@ -159,21 +216,51 @@ export default {
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   margin-bottom: 4px;
+  background-color: #fff;
 }
 
 .nav-item .icon {
   width: 20px;
   margin-right: 10px;
+  color: inherit;
 }
 
-.nav-item.active,
 .nav-item:hover {
   background-color: #fff6e5;
-  color: #f59e0b;
-  /* orange-500 */
 }
 
-/* Customers row layout */
+.nav-item:hover .icon {
+  color: #f59e0b;
+}
+
+.nav-item:hover .text {
+  color: #000;
+}
+
+.nav-item.active {
+  background-color: #fff;
+}
+
+.nav-item.active .icon {
+  color: #f59e0b;
+}
+
+.nav-item.active .text {
+  color: #555;
+}
+
+.nav-item.active:hover {
+  background-color: #fff6e5;
+}
+
+.nav-item.active:hover .icon {
+  color: #f59e0b;
+}
+
+.nav-item.active:hover .text {
+  color: #000;
+}
+
 .customers-row {
   justify-content: space-between;
 }
@@ -183,8 +270,14 @@ export default {
   align-items: center;
 }
 
-.customers-row .arrow {
-  font-size: 12px;
+.chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s;
+}
+
+.chevron.rotated {
+  transform: rotate(180deg);
 }
 
 .sub-menu {
@@ -209,7 +302,6 @@ export default {
   padding-top: 1.2rem;
 }
 
-/* User Info */
 .user-info {
   display: flex;
   align-items: center;
@@ -222,6 +314,7 @@ export default {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .user-details .name {
@@ -246,5 +339,18 @@ export default {
 
 .logout:hover {
   color: #555;
+}
+
+/* Responsive: small height scroll fix */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 260px;
+  }
+  
+  .sidebar.collapsed {
+    width: 0;
+    padding: 60px 0 16px;
+    overflow: hidden;
+  }
 }
 </style>
